@@ -1,45 +1,42 @@
-function calculateTotal() {
-  let subtotal = 0;
-  const rows = document.querySelectorAll("#invoice-table tbody tr");
+document.getElementById('date').innerText = new Date().toLocaleDateString();
+document.getElementById('due-date').innerText = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
 
-  rows.forEach(row => {
-    const quantity = row.querySelector(".quantity").value;
-    const unitPrice = row.querySelector(".unit-price").value;
-    const total = quantity * unitPrice;
+const items = [
+    { qty: 1, description: 'Frontend design restructure', unitPrice: 9999 },
+    { qty: 2, description: 'Custom icon package', unitPrice: 975 },
+    { qty: 3, description: 'Gandhi mouse pad', unitPrice: 99 },
+];
 
-    row.querySelector(".item-total").textContent = `₹${total.toFixed(2)}`;
-    subtotal += total;
-  });
+function populateItems() {
+    const itemList = document.getElementById('item-list');
+    let subtotal = 0;
 
-  document.getElementById("subtotal").textContent = `₹${subtotal.toFixed(2)}`;
-  document.getElementById("grand-total").textContent = `₹${subtotal.toFixed(2)}`;
-}
+    items.forEach(item => {
+        const amount = item.qty * item.unitPrice;
+        subtotal += amount;
 
-function addRow() {
-  const table = document.querySelector("#invoice-table tbody");
-  const row = document.createElement("tr");
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.qty}</td>
+            <td>${item.description}</td>
+            <td>₹${item.unitPrice.toFixed(2)}</td>
+            <td>₹${amount.toFixed(2)}</td>
+        `;
+        itemList.appendChild(row);
+    });
 
-  row.innerHTML = `
-    <td><input type="text" class="service" placeholder="Description"></td>
-    <td><input type="number" class="quantity" value="1" min="1" oninput="calculateTotal()"></td>
-    <td><input type="number" class="unit-price" value="0" min="0" oninput="calculateTotal()"></td>
-    <td class="item-total">₹0.00</td>
-    <td><button class="btn-remove" onclick="removeRow(this)">Remove</button></td>
-  `;
-
-  table.appendChild(row);
-}
-
-function removeRow(button) {
-  button.parentElement.parentElement.remove();
-  calculateTotal();
+    document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+    document.getElementById('total').innerText = subtotal.toFixed(2);
 }
 
 function downloadInvoice() {
-  html2canvas(document.querySelector("#invoice")).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "invoice.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  });
+    const invoice = document.getElementById('invoice');
+    html2canvas(invoice).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'invoice.png';
+        link.click();
+    });
 }
+
+populateItems();
