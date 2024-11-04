@@ -1,145 +1,92 @@
-/* General styling */
 * {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-  padding: 20px;
-  background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: #f4f7f8;
 }
 
-/* Invoice container styling */
 .invoice-container {
-  max-width: 800px;
-  margin: auto;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #333;
+    width: 800px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-/* Header styling */
-.invoice-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #6c757d;
+    padding-bottom: 10px;
 }
 
-.invoice-header h1 {
-  font-size: 32px;
-  color: #007bff;
+.company-info {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.invoice-title h1 {
+    font-size: 32px;
+    color: #007bff;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+.bill-to h3 {
+    font-size: 16px;
+    color: #007bff;
+    margin-bottom: 5px;
 }
 
 .invoice-info p {
-  font-size: 14px;
-  color: #555;
+    margin: 5px 0;
 }
 
-/* Customer info section styling */
-.customer-info {
-  margin-bottom: 20px;
+.items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
 }
 
-.form-group {
-  margin-bottom: 10px;
+.items th, .items td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #6c757d;
 }
 
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
+.items th {
+    color: #007bff;
 }
 
-input[type="text"], input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-/* Table styling */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.table th, .table td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-}
-
-.table th {
-  background-color: #f9f9f9;
-  font-weight: bold;
-  color: #555;
-}
-
-.table .btn-remove {
-  padding: 6px 12px;
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.table .btn-remove:hover {
-  background-color: #c0392b;
-}
-
-/* Totals section styling */
 .totals {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 2px solid #007bff;
+    text-align: right;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-.total-row {
-  width: 300px;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.total-row h3, .total-row h4 {
-  font-weight: normal;
-  color: #333;
-}
-
-.grand-total {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.footer {
-  text-align: center;
-  font-size: 12px;
-  color: #888;
-  margin-top: 20px;
-}
-
-/* Buttons */
-.add-item, .download-button {
-  margin-top: 15px;
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.add-item:hover, .download-button:hover {
-  background-color: #0056b3;
+button:hover {
+    background-color: #0056b3;
 }
