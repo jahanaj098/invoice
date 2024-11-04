@@ -12,9 +12,7 @@ function calculateTotal() {
   });
 
   document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-  const tax = subtotal * 0.10;
-  document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-  document.getElementById("grand-total").textContent = `$${(subtotal + tax).toFixed(2)}`;
+  document.getElementById("grand-total").textContent = `$${subtotal.toFixed(2)}`;
 }
 
 function addRow() {
@@ -35,4 +33,13 @@ function addRow() {
 function removeRow(button) {
   button.parentElement.parentElement.remove();
   calculateTotal();
+}
+
+function downloadInvoice() {
+  html2canvas(document.querySelector("#invoice")).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "invoice.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
 }
