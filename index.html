@@ -1,77 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invoice Generator</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="invoice-container" id="invoice">
-    <header>
-      <div class="invoice-header">
-        <h1>Invoice</h1>
-        <div class="invoice-info">
-          <p>Invoice #: <input type="text" id="invoice-number" value="001" /></p>
-          <p>Date: <input type="text" id="invoice-date" value="2024-11-04" /></p>
-        </div>
-      </div>
-    </header>
 
-    <section class="customer-info">
-      <div class="form-group">
-        <label for="customer-name">Customer Name</label>
-        <input type="text" id="customer-name" placeholder="Enter customer name">
-      </div>
-      <div class="form-group">
-        <label for="customer-phone">Phone Number</label>
-        <input type="text" id="customer-phone" placeholder="Enter phone number">
-      </div>
-    </section>
+    <div class="invoice-container" id="invoice">
+        <header>
+            <div class="company-info">
+                <h2>Your Company</h2>
+                <p>123 Street Address<br>City, State, Zip Code<br>Phone: +91 XXXXXXXXXX</p>
+            </div>
+            <div class="invoice-title">
+                <h1>INVOICE</h1>
+            </div>
+        </header>
 
-    <section>
-      <table class="table" id="invoice-table">
-        <thead>
-          <tr>
-            <th>Service Provided</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="text" class="service" placeholder="Description"></td>
-            <td><input type="number" class="quantity" value="1" min="1" oninput="calculateTotal()"></td>
-            <td><input type="number" class="unit-price" value="0" min="0" oninput="calculateTotal()"></td>
-            <td class="item-total">₹0.00</td>
-            <td><button class="btn-remove" onclick="removeRow(this)">Remove</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="add-item" onclick="addRow()">+ Add Item</button>
-    </section>
+        <section class="details">
+            <div class="bill-to">
+                <h3>Bill To:</h3>
+                <p id="customer-name">Customer Name</p>
+                <p id="customer-address">Address Line 1<br>City, Zip Code</p>
+            </div>
+            <div class="invoice-info">
+                <p><strong>Invoice #:</strong> IN-001</p>
+                <p><strong>Date:</strong> <span id="date"></span></p>
+                <p><strong>Due Date:</strong> <span id="due-date"></span></p>
+            </div>
+        </section>
 
-    <section class="totals">
-      <div class="total-row">
-        <h4>Subtotal:</h4>
-        <h4 id="subtotal">₹0.00</h4>
-      </div>
-      <div class="total-row grand-total">
-        <h3>Total:</h3>
-        <h3 id="grand-total">₹0.00</h3>
-      </div>
-    </section>
+        <section class="items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>QTY</th>
+                        <th>DESCRIPTION</th>
+                        <th>UNIT PRICE</th>
+                        <th>AMOUNT (INR)</th>
+                    </tr>
+                </thead>
+                <tbody id="item-list">
+                    <!-- Items will be added here dynamically -->
+                </tbody>
+            </table>
+        </section>
 
-    <footer>
-      <p>Thank you for your business!</p>
-    </footer>
-  </div>
+        <section class="totals">
+            <p><strong>Subtotal:</strong> ₹<span id="subtotal">0.00</span></p>
+            <p><strong>Total:</strong> ₹<span id="total">0.00</span></p>
+        </section>
+    </div>
 
-  <button class="download-button" onclick="downloadInvoice()">Download as Image</button>
+    <button onclick="downloadInvoice()">Download Invoice</button>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
