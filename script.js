@@ -24,7 +24,7 @@ function addRow() {
     <td><input type="number" class="quantity" value="1" min="1" oninput="calculateTotal()"></td>
     <td><input type="number" class="unit-price" value="0" min="0" oninput="calculateTotal()"></td>
     <td class="item-total">$0.00</td>
-    <td><button onclick="removeRow(this)">Remove</button></td>
+    <td><button class="btn-remove" onclick="removeRow(this)">Remove</button></td>
   `;
 
   table.appendChild(row);
