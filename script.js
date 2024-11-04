@@ -7,12 +7,12 @@ function calculateTotal() {
     const unitPrice = row.querySelector(".unit-price").value;
     const total = quantity * unitPrice;
 
-    row.querySelector(".item-total").textContent = `$${total.toFixed(2)}`;
+    row.querySelector(".item-total").textContent = `₹${total.toFixed(2)}`;
     subtotal += total;
   });
 
-  document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById("grand-total").textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById("subtotal").textContent = `₹${subtotal.toFixed(2)}`;
+  document.getElementById("grand-total").textContent = `₹${subtotal.toFixed(2)}`;
 }
 
 function addRow() {
@@ -23,7 +23,7 @@ function addRow() {
     <td><input type="text" class="service" placeholder="Description"></td>
     <td><input type="number" class="quantity" value="1" min="1" oninput="calculateTotal()"></td>
     <td><input type="number" class="unit-price" value="0" min="0" oninput="calculateTotal()"></td>
-    <td class="item-total">$0.00</td>
+    <td class="item-total">₹0.00</td>
     <td><button class="btn-remove" onclick="removeRow(this)">Remove</button></td>
   `;
 
